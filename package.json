@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "swagger-autogen": "node utils/swagger.js"
+      "swagger": "node  utils/swagger.js"
   },
   "author": "",
   "license": "ISC",
