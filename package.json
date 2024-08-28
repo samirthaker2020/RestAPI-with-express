@@ -1,0 +1,24 @@
+{
+  "name": "rest-api-with-express",
+  "version": "1.0.0",
+  "description": "this is a sample project of REST API using node & express framework with swagger documentation",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "swagger-autogen": "node utils/swagger.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "and": "^0.0.3",
+    "body-parser": "^1.20.2",
+    "dayjs": "^1.11.13",
+    "express": "^4.19.2",
+    "mysql": "^2.18.1",
+    "pino": "^9.3.2",
+    "swagger-autogen": "^2.23.7",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1"
+  }
+}
