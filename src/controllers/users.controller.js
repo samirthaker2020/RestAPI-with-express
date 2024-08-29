@@ -2,7 +2,7 @@
 const usersService = require('../services/users.service')
 
 exports.register = (req, res, next) => {
-   // #swagger.tags = ['Users']
+  // #swagger.tags = ['Users']
   // Validation area
   const data = {
     firstName: req.body.firstName,

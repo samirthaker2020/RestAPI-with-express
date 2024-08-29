@@ -23,12 +23,12 @@ exports.getAllPosts = (data, callback) => {
     [],
     (error, results, fields) => {
       if (error) {
-        return callback(error);
+        return callback(error)
       }
-      return callback(null, results);
+      return callback(null, results)
     }
-  );
-};
+  )
+}
 
 exports.addPostComment = (data, callback) => {
   db.query(
@@ -36,12 +36,12 @@ exports.addPostComment = (data, callback) => {
     [data.postId, data.comment, new Date(), data.addedByUserId],
     (error, results, fields) => {
       if (error) {
-        return callback(error);
+        return callback(error)
       }
-      return callback(null, `Comment Added Successfully`);
+      return callback(null, `Comment Added Successfully`)
     }
-  );
-};
+  )
+}
 exports.getPostAllComments = (data, callback) => {
   db.query(
     `SELECT c.comment, c.datetimeCreated, c.addedByUserId, u.firstName, u.lastName
@@ -50,12 +50,12 @@ exports.getPostAllComments = (data, callback) => {
     [data.postId],
     (error, results, fields) => {
       if (error) {
-        return callback(error);
+        return callback(error)
       }
-      return callback(null, results);
+      return callback(null, results)
     }
-  );
-};
+  )
+}
 exports.likePost = (data, callback) => {
   db.query(
     `UPDATE  posts
@@ -66,16 +66,16 @@ exports.likePost = (data, callback) => {
     [data.postId],
     (error, results, fields) => {
       if (error) {
-        return callback(error);
+        return callback(error)
       }
       if (results.affectedRows === 1) {
-        return callback(null, `Like Successful`);
+        return callback(null, `Like Successful`)
       } else {
-        return callback(new Error("Invalid post"));
+        return callback(new Error('Invalid post'))
       }
     }
-  );
-};
+  )
+}
 
 exports.dislikePost = (data, callback) => {
   db.query(
@@ -87,16 +87,16 @@ exports.dislikePost = (data, callback) => {
     [data.postId],
     (error, results, fields) => {
       if (error) {
-        return callback(error);
+        return callback(error)
       }
       if (results.affectedRows === 1) {
-        return callback(null, `Dislike Successful`);
+        return callback(null, `Dislike Successful`)
       } else {
-        return callback(new Error("Invalid post"));
+        return callback(new Error('Invalid post'))
       }
     }
-  );
-};
+  )
+}
 exports.deletePost = (data, callback) => {
   db.query(
     `DELETE FROM posts 
@@ -104,13 +104,13 @@ exports.deletePost = (data, callback) => {
     [data.postId],
     (error, results, fields) => {
       if (error) {
-        return callback(error);
+        return callback(error)
       }
       if (results.affectedRows === 1) {
-        return callback(null, `Post Deleted Successfully`);
+        return callback(null, `Post Deleted Successfully`)
       } else {
-        return callback(new Error("Invalid post"));
+        return callback(new Error('Invalid post'))
       }
     }
-  );
-};
+  )
+}
