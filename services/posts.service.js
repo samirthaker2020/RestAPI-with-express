@@ -14,3 +14,18 @@ exports.addPost = (data, callback) => {
     }
   )
 }
+
+exports.getAllPosts = (data, callback) => {
+  db.query(
+    `SELECT p.id AS postId, p.description, p.datetimeCreated, 
+    p.likeCount, p.dislikeCount, p.addedByUserId, u.firstName, u.lastName 
+    FROM posts AS p INNER JOIN users AS u ON p.addedByUserId = u.id`,
+    [],
+    (error, results, fields) => {
+      if (error) {
+        return callback(error);
+      }
+      return callback(null, results);
+    }
+  );
+};
