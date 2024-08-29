@@ -2,6 +2,7 @@
 const usersService = require('../services/users.service')
 
 exports.register = (req, res, next) => {
+   // #swagger.tags = ['Users']
   // Validation area
   const data = {
     firstName: req.body.firstName,
@@ -21,6 +22,7 @@ exports.register = (req, res, next) => {
   })
 }
 exports.login = (req, res) => {
+  // #swagger.tags = ['Users']
   // Validation area
   const data = {
     emailId: req.body.emailId,

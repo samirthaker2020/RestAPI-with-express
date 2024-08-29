@@ -3,7 +3,13 @@
   "info": {
     "title": "My Blog",
     "description": "This is a sample project for Blog",
-    "version": "1.0.0"
+    "version": "1.0.0",
+    "tags": [
+      {
+        "name": "",
+        "description": ""
+      }
+    ]
   },
   "host": "localhost:3000",
   "basePath": "/",
@@ -13,6 +19,9 @@
   "paths": {
     "/users/register": {
       "post": {
+        "tags": [
+          "Users"
+        ],
         "description": "",
         "parameters": [
           {
@@ -49,6 +58,9 @@
     },
     "/users/login": {
       "post": {
+        "tags": [
+          "Users"
+        ],
         "description": "",
         "parameters": [
           {
@@ -79,6 +91,9 @@
     },
     "/posts/add-post": {
       "post": {
+        "tags": [
+          "Posts"
+        ],
         "description": "",
         "parameters": [
           {
@@ -112,6 +127,9 @@
     },
     "/posts/add-post-comment": {
       "post": {
+        "tags": [
+          "Comments"
+        ],
         "description": "",
         "parameters": [
           {
@@ -145,6 +163,9 @@
     },
     "/posts/get-all-post": {
       "get": {
+        "tags": [
+          "Posts"
+        ],
         "description": "",
         "responses": {
           "200": {
@@ -158,6 +179,9 @@
     },
     "/posts/get-post-all-comments": {
       "get": {
+        "tags": [
+          "Comments"
+        ],
         "description": "",
         "parameters": [
           {
@@ -178,6 +202,9 @@
     },
     "/posts/dislike-post": {
       "put": {
+        "tags": [
+          "Likes"
+        ],
         "description": "",
         "parameters": [
           {
@@ -205,6 +232,9 @@
     },
     "/posts/like-post": {
       "put": {
+        "tags": [
+          "Likes"
+        ],
         "description": "",
         "parameters": [
           {
@@ -232,6 +262,9 @@
     },
     "/posts/delete-post": {
       "delete": {
+        "tags": [
+          "Posts"
+        ],
         "description": "",
         "parameters": [
           {

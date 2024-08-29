@@ -2,6 +2,7 @@
 const postsService = require('../services/posts.service')
 
 exports.addPost = (req, res) => {
+  // #swagger.tags = ['Posts']
   const data = {
     description: req.body.description,
     imagePath: req.body.imagePath,
@@ -20,6 +21,7 @@ exports.addPost = (req, res) => {
   })
 }
 exports.getAllPosts = (req, res, next) => {
+   // #swagger.tags = ['Posts']
   const data = {};
   postsService.getAllPosts(data, (error, results) => {
     if (error) {
@@ -34,6 +36,7 @@ exports.getAllPosts = (req, res, next) => {
 };
 
 exports.addPostComment = (req, res, next) => {
+   // #swagger.tags = ['Comments']
   const data = {
     postId: req.body.postId,
     comment: req.body.comment,
@@ -51,6 +54,7 @@ exports.addPostComment = (req, res, next) => {
   });
 };
 exports.getPostAllComments = (req, res, next) => {
+   // #swagger.tags = ['Comments']
   const data = {
     postId: req.query.postId,
   };
@@ -66,6 +70,7 @@ exports.getPostAllComments = (req, res, next) => {
   });
 };
 exports.likePost = (req, res, next) => {
+   // #swagger.tags = ['Likes']
   const data = {
     postId: req.body.postId,
   };
@@ -82,6 +87,7 @@ exports.likePost = (req, res, next) => {
 };
 
 exports.dislikePost = (req, res, next) => {
+   // #swagger.tags = ['Likes']
   const data = {
     postId: req.body.postId,
   };
@@ -97,6 +103,7 @@ exports.dislikePost = (req, res, next) => {
   });
 };
 exports.deletePost = (req, res, next) => {
+   // #swagger.tags = ['Posts']
   const data = {
     postId: req.query.postId,
   };

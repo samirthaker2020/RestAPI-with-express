@@ -4,7 +4,16 @@ const doc = {
   info: {
     // name of your api
     title: 'My Blog',
-    description: 'This is a sample project for Blog'
+    description: 'This is a sample project for Blog',
+    version: '1.0.0' ,
+    tags: [                   // by default: empty Array
+      {
+        name: '',             // Tag name
+        description: ''       // Tag description
+      },
+      // { ... }
+    ],
+
   },
   host: 'localhost:3000'
 }
