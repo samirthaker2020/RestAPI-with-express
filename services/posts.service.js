@@ -42,3 +42,17 @@ exports.addPostComment = (data, callback) => {
     }
   );
 };
+exports.getPostAllComments = (data, callback) => {
+  db.query(
+    `SELECT c.comment, c.datetimeCreated, c.addedByUserId, u.firstName, u.lastName
+    FROM comments AS c INNER JOIN users AS u ON c.addedByUserId = u.id
+    WHERE c.addedByPostId = ?`,
+    [data.postId],
+    (error, results, fields) => {
+      if (error) {
+        return callback(error);
+      }
+      return callback(null, results);
+    }
+  );
+};
