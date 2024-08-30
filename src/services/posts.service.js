@@ -4,15 +4,27 @@ const db = require('../config/db.config')
 exports.addPost = (data, callback) => {
   db.query(
     `INSERT INTO posts (description, imagePath, datetimeCreated, addedByUserId)
-    VALUES (?, ?, ?, ?)`,
+     VALUES (?, ?, ?, ?)`,
     [data.description, data.imagePath, new Date(), data.addedByUserId],
     (error, results, fields) => {
       if (error) {
-        return callback(error)
+        return callback(error);
       }
-      return callback(null, 'Post added successfully')
+  
+      const insertedId = results.insertId;
+  
+      db.query(
+        `SELECT * FROM posts WHERE id = ?`,
+        [insertedId],
+        (error, results, fields) => {
+          if (error) {
+            return callback(error);
+          }
+          return callback(null, results[0]);
+        }
+      );
     }
-  )
+  );
 }
 
 exports.getAllPosts = (data, callback) => {
@@ -36,11 +48,26 @@ exports.addPostComment = (data, callback) => {
     [data.postId, data.comment, new Date(), data.addedByUserId],
     (error, results, fields) => {
       if (error) {
-        return callback(error)
+        return callback(error);
       }
-      return callback(null, `Comment Added Successfully`)
+  
+      const insertedId = results.insertId; // Get the ID of the newly inserted comment
+  
+      // Now, retrieve the inserted comment using the insertId
+      db.query(
+        `SELECT * FROM comments WHERE id = ?`,
+        [insertedId],
+        (error, results, fields) => {
+          if (error) {
+            return callback(error);
+          }
+          
+          return callback(null, results[0]); // Return the inserted comment record
+        }
+      );
     }
-  )
+  );
+  
 }
 exports.getPostAllComments = (data, callback) => {
   db.query(
@@ -98,19 +125,22 @@ exports.dislikePost = (data, callback) => {
   )
 }
 exports.deletePost = (data, callback) => {
+   
   db.query(
     `DELETE FROM posts 
-    WHERE id = ?`,
+     WHERE id = ?`,
     [data.postId],
     (error, results, fields) => {
       if (error) {
-        return callback(error)
+        return callback(error);
       }
       if (results.affectedRows === 1) {
-        return callback(null, `Post Deleted Successfully`)
+        // Return the deleted post ID as confirmation
+        return callback(null, { deletedPostId: data });
       } else {
-        return callback(new Error('Invalid post'))
+        return callback(new Error('Invalid post'));
       }
     }
-  )
+  );
+  
 }

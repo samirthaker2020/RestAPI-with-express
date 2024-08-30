@@ -8,4 +8,13 @@ describe('user makes posts', () => {
     expect(res.status).to.equal(200);
     expect(res.body).to.be.an("object");
   });
+  it("should create a post", async () => {
+    const res= await request(app).post("/posts/add-post").send({
+        "description": "test",
+        "imagePath": "any.jpg",
+        "addedByUserId": "1"
+    })
+    expect(res.status).to.equal(200);
+    expect(res.body).to.be.an("object");
+  })
 });
