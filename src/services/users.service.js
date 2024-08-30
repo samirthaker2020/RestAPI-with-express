@@ -7,11 +7,26 @@ exports.register = (data, callback) => {
     [data.firstName, data.lastName, data.emailId, data.password],
     (error, results, fields) => {
       if (error) {
-        return callback(error)
+        return callback(error);
       }
-      return callback(null, `Registration successful`)
+  
+      const insertedId = results.insertId; // Get the ID of the newly inserted user
+  
+      // Now, retrieve the inserted user record using the insertId
+      db.query(
+        `SELECT id,firstName,lastName,emailId FROM users WHERE id = ?`,
+        [insertedId],
+        (error, results, fields) => {
+          if (error) {
+            return callback(error);
+          }
+  
+          return callback(null, results[0]); // Return the inserted user record
+        }
+      );
     }
-  )
+  );
+  
 }
 exports.login = (data, callback) => {
   db.query(
