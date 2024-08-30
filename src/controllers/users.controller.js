@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-const usersService = require('../services/users.service')
+const usersService = require('../services/users.service');
 
 exports.register = (req, res, next) => {
   // #swagger.tags = ['Users']
@@ -8,34 +8,34 @@ exports.register = (req, res, next) => {
     firstName: req.body.firstName,
     lastName: req.body.lastName,
     emailId: req.body.emailId,
-    password: req.body.password
-  }
+    password: req.body.password,
+  };
   usersService.register(data, (error, results) => {
     if (error) {
-      console.log(error)
-      return res.status(400).send({ success: 0, data: 'Bad request' })
+      console.log(error);
+      return res.status(400).send({ success: 0, data: 'Bad request' });
     }
     return res.status(200).send({
       success: 1,
-      data: results
-    })
-  })
-}
+      data: results,
+    });
+  });
+};
 exports.login = (req, res) => {
   // #swagger.tags = ['Users']
   // Validation area
   const data = {
     emailId: req.body.emailId,
-    password: req.body.password
-  }
+    password: req.body.password,
+  };
   usersService.login(data, (error, results) => {
     if (error) {
-      console.log(error)
-      return res.status(400).send({ success: 0, data: 'Bad request' })
+      console.log(error);
+      return res.status(400).send({ success: 0, data: 'Bad request' });
     }
     return res.status(200).send({
       success: 1,
-      data: results
-    })
-  })
-}
+      data: results,
+    });
+  });
+};

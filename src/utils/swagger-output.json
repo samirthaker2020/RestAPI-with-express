@@ -13,15 +13,11 @@
   },
   "host": "localhost:3000",
   "basePath": "/",
-  "schemes": [
-    "http"
-  ],
+  "schemes": ["http"],
   "paths": {
     "/users/register": {
       "post": {
-        "tags": [
-          "Users"
-        ],
+        "tags": ["Users"],
         "description": "",
         "parameters": [
           {
@@ -58,9 +54,7 @@
     },
     "/users/login": {
       "post": {
-        "tags": [
-          "Users"
-        ],
+        "tags": ["Users"],
         "description": "",
         "parameters": [
           {
@@ -91,9 +85,7 @@
     },
     "/posts/add-post": {
       "post": {
-        "tags": [
-          "Posts"
-        ],
+        "tags": ["Posts"],
         "description": "",
         "parameters": [
           {
@@ -127,9 +119,7 @@
     },
     "/posts/add-post-comment": {
       "post": {
-        "tags": [
-          "Comments"
-        ],
+        "tags": ["Comments"],
         "description": "",
         "parameters": [
           {
@@ -163,9 +153,7 @@
     },
     "/posts/get-all-post": {
       "get": {
-        "tags": [
-          "Posts"
-        ],
+        "tags": ["Posts"],
         "description": "",
         "responses": {
           "200": {
@@ -179,9 +167,7 @@
     },
     "/posts/get-post-all-comments": {
       "get": {
-        "tags": [
-          "Comments"
-        ],
+        "tags": ["Comments"],
         "description": "",
         "parameters": [
           {
@@ -202,9 +188,7 @@
     },
     "/posts/dislike-post": {
       "put": {
-        "tags": [
-          "Likes"
-        ],
+        "tags": ["Likes"],
         "description": "",
         "parameters": [
           {
@@ -232,9 +216,7 @@
     },
     "/posts/like-post": {
       "put": {
-        "tags": [
-          "Likes"
-        ],
+        "tags": ["Likes"],
         "description": "",
         "parameters": [
           {
@@ -262,9 +244,7 @@
     },
     "/posts/delete-post": {
       "delete": {
-        "tags": [
-          "Posts"
-        ],
+        "tags": ["Posts"],
         "description": "",
         "parameters": [
           {

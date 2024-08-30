@@ -1,4 +1,4 @@
-const { createPool } = require('mysql')
+const { createPool } = require('mysql');
 /** Connection pool creation - START */
 const db = createPool({
   port: 3306,
@@ -6,8 +6,8 @@ const db = createPool({
   user: 'root',
   password: '',
   database: 'blogdb',
-  connectionLimit: 10
-})
+  connectionLimit: 10,
+});
 /** Connection pool creation - END */
 
-module.exports = db
+module.exports = db;

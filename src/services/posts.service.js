@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-const db = require('../config/db.config')
+const db = require('../config/db.config');
 
 exports.addPost = (data, callback) => {
   db.query(
@@ -10,11 +10,11 @@ exports.addPost = (data, callback) => {
       if (error) {
         return callback(error);
       }
-  
+
       const insertedId = results.insertId;
-  
+
       db.query(
-        `SELECT * FROM posts WHERE id = ?`,
+        'SELECT * FROM posts WHERE id = ?',
         [insertedId],
         (error, results, fields) => {
           if (error) {
@@ -25,7 +25,7 @@ exports.addPost = (data, callback) => {
       );
     }
   );
-}
+};
 
 exports.getAllPosts = (data, callback) => {
   db.query(
@@ -35,40 +35,39 @@ exports.getAllPosts = (data, callback) => {
     [],
     (error, results, fields) => {
       if (error) {
-        return callback(error)
+        return callback(error);
       }
-      return callback(null, results)
+      return callback(null, results);
     }
-  )
-}
+  );
+};
 
 exports.addPostComment = (data, callback) => {
   db.query(
-    `INSERT INTO comments (addedByPostId, comment, datetimeCreated, addedByUserId) VALUES (?, ?, ?, ?)`,
+    'INSERT INTO comments (addedByPostId, comment, datetimeCreated, addedByUserId) VALUES (?, ?, ?, ?)',
     [data.postId, data.comment, new Date(), data.addedByUserId],
     (error, results, fields) => {
       if (error) {
         return callback(error);
       }
-  
+
       const insertedId = results.insertId; // Get the ID of the newly inserted comment
-  
+
       // Now, retrieve the inserted comment using the insertId
       db.query(
-        `SELECT * FROM comments WHERE id = ?`,
+        'SELECT * FROM comments WHERE id = ?',
         [insertedId],
         (error, results, fields) => {
           if (error) {
             return callback(error);
           }
-          
+
           return callback(null, results[0]); // Return the inserted comment record
         }
       );
     }
   );
-  
-}
+};
 exports.getPostAllComments = (data, callback) => {
   db.query(
     `SELECT c.comment, c.datetimeCreated, c.addedByUserId, u.firstName, u.lastName
@@ -77,12 +76,12 @@ exports.getPostAllComments = (data, callback) => {
     [data.postId],
     (error, results, fields) => {
       if (error) {
-        return callback(error)
+        return callback(error);
       }
-      return callback(null, results)
+      return callback(null, results);
     }
-  )
-}
+  );
+};
 exports.likePost = (data, callback) => {
   db.query(
     `UPDATE  posts
@@ -93,16 +92,16 @@ exports.likePost = (data, callback) => {
     [data.postId],
     (error, results, fields) => {
       if (error) {
-        return callback(error)
+        return callback(error);
       }
       if (results.affectedRows === 1) {
-        return callback(null, `Like Successful`)
+        return callback(null, 'Like Successful');
       } else {
-        return callback(new Error('Invalid post'))
+        return callback(new Error('Invalid post'));
       }
     }
-  )
-}
+  );
+};
 
 exports.dislikePost = (data, callback) => {
   db.query(
@@ -114,18 +113,17 @@ exports.dislikePost = (data, callback) => {
     [data.postId],
     (error, results, fields) => {
       if (error) {
-        return callback(error)
+        return callback(error);
       }
       if (results.affectedRows === 1) {
-        return callback(null, `Dislike Successful`)
+        return callback(null, 'Dislike Successful');
       } else {
-        return callback(new Error('Invalid post'))
+        return callback(new Error('Invalid post'));
       }
     }
-  )
-}
+  );
+};
 exports.deletePost = (data, callback) => {
-   
   db.query(
     `DELETE FROM posts 
      WHERE id = ?`,
@@ -142,5 +140,4 @@ exports.deletePost = (data, callback) => {
       }
     }
   );
-  
-}
+};

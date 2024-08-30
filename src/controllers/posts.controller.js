@@ -1,120 +1,120 @@
 /* eslint-disable no-unused-vars */
-const postsService = require('../services/posts.service')
+const postsService = require('../services/posts.service');
 
 exports.addPost = (req, res) => {
   // #swagger.tags = ['Posts']
   const data = {
     description: req.body.description,
     imagePath: req.body.imagePath,
-    addedByUserId: req.body.addedByUserId
-  }
+    addedByUserId: req.body.addedByUserId,
+  };
 
   postsService.addPost(data, (error, results) => {
     if (error) {
-      console.log(error)
-      return res.status(400).send({ success: 0, data: 'Bad request' })
+      console.log(error);
+      return res.status(400).send({ success: 0, data: 'Bad request' });
     }
     return res.status(200).send({
       success: 1,
-      data: results
-    })
-  })
-}
+      data: results,
+    });
+  });
+};
 exports.getAllPosts = (req, res, next) => {
   // #swagger.tags = ['Posts']
-  const data = {}
+  const data = {};
   postsService.getAllPosts(data, (error, results) => {
     if (error) {
-      console.log(error)
-      return res.status(400).send({ success: 0, data: 'Bad request' })
+      console.log(error);
+      return res.status(400).send({ success: 0, data: 'Bad request' });
     }
     return res.status(200).send({
       success: 1,
-      data: results
-    })
-  })
-}
+      data: results,
+    });
+  });
+};
 
 exports.addPostComment = (req, res, next) => {
   // #swagger.tags = ['Comments']
   const data = {
     postId: req.body.postId,
     comment: req.body.comment,
-    addedByUserId: req.body.addedByUserId
-  }
+    addedByUserId: req.body.addedByUserId,
+  };
   postsService.addPostComment(data, (error, results) => {
     if (error) {
-      console.log(error)
-      return res.status(400).send({ success: 0, data: 'Bad request' })
+      console.log(error);
+      return res.status(400).send({ success: 0, data: 'Bad request' });
     }
     return res.status(200).send({
       success: 1,
-      data: results
-    })
-  })
-}
+      data: results,
+    });
+  });
+};
 exports.getPostAllComments = (req, res, next) => {
   // #swagger.tags = ['Comments']
   const data = {
-    postId: req.query.postId
-  }
+    postId: req.query.postId,
+  };
   postsService.getPostAllComments(data, (error, results) => {
     if (error) {
-      console.log(error)
-      return res.status(400).send({ success: 0, data: 'Bad request' })
+      console.log(error);
+      return res.status(400).send({ success: 0, data: 'Bad request' });
     }
     return res.status(200).send({
       success: 1,
-      data: results
-    })
-  })
-}
+      data: results,
+    });
+  });
+};
 exports.likePost = (req, res, next) => {
   // #swagger.tags = ['Likes']
   const data = {
-    postId: req.body.postId
-  }
+    postId: req.body.postId,
+  };
   postsService.likePost(data, (error, results) => {
     if (error) {
-      console.log(error)
-      return res.status(400).send({ success: 0, data: 'Bad request' })
+      console.log(error);
+      return res.status(400).send({ success: 0, data: 'Bad request' });
     }
     return res.status(200).send({
       success: 1,
-      data: results
-    })
-  })
-}
+      data: results,
+    });
+  });
+};
 
 exports.dislikePost = (req, res, next) => {
   // #swagger.tags = ['Likes']
   const data = {
-    postId: req.body.postId
-  }
+    postId: req.body.postId,
+  };
   postsService.dislikePost(data, (error, results) => {
     if (error) {
-      console.log(error)
-      return res.status(400).send({ success: 0, data: 'Bad request' })
+      console.log(error);
+      return res.status(400).send({ success: 0, data: 'Bad request' });
     }
     return res.status(200).send({
       success: 1,
-      data: results
-    })
-  })
-}
+      data: results,
+    });
+  });
+};
 exports.deletePost = (req, res, next) => {
   // #swagger.tags = ['Posts']
   const data = {
-    postId: req.query.postId
-  }
+    postId: req.query.postId,
+  };
   postsService.deletePost(data, (error, results) => {
     if (error) {
-      console.log(error)
-      return res.status(400).send({ success: 0, data: 'Bad request' })
+      console.log(error);
+      return res.status(400).send({ success: 0, data: 'Bad request' });
     }
     return res.status(200).send({
       success: 1,
-      data: results
-    })
-  })
-}
+      data: results,
+    });
+  });
+};
