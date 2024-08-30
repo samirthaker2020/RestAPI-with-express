@@ -29,4 +29,4 @@ jobs:
         run: npm install
 
       - name: Run tests
-        run: npm test src/test
+        run: npm run unit-test

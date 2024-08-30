@@ -10,7 +10,7 @@
     "check-format": "prettier --check .",
     "lint": "eslint . ",
     "lint:fix": "eslint . --fix ",
-    "test": "mocha",
+    "unit-test": "mocha 'src/test/unit-tests/*.js'",
     "test:coverage":"nyc mocha"
   },
   "author": "",
